@@ -7321,6 +7321,7 @@ void HpCdrProcessLastSession(PCDROM_TOC Toc )
 
   {
   index = Toc->FirstTrack;
+  __VERIFIER_assume(index < 100);
   if (index) {
     index -= 1UL;
     Toc->FirstTrack = Toc->TrackData[0].Reserved;
@@ -7547,7 +7548,9 @@ int main(void)
   int irp_choice = __VERIFIER_nondet_int() ;
   DEVICE_OBJECT devobj ;
   devobj.DeviceExtension = malloc(sizeof (CD_DEVICE_EXTENSION));
-  irp.Tail.Overlay.__annonCompField17.__annonCompField16.CurrentStackLocation = malloc(sizeof (IO_STACK_LOCATION));
+  void *stack = malloc(3*sizeof (IO_STACK_LOCATION));
+  irp.Tail.Overlay.__annonCompField17.__annonCompField16.CurrentStackLocation = stack;
+  irp.Tail.Overlay.__annonCompField17.__annonCompField16.CurrentStackLocation++;
   irp.AssociatedIrp.SystemBuffer = malloc(sizeof (CDROM_TOC));
 
   {
@@ -7625,6 +7628,7 @@ int main(void)
   } else {
 
   }
+
   if (pended == 1) {
     if (s == NP) {
       s = NP;

@@ -3963,10 +3963,12 @@ inline void mutex_unlock(struct mutex *lock)
 int ddv_ioport_request_start;
 int ddv_ioport_request_len;
 
+static struct resource *allocated_mem;
 inline struct resource *request_region(unsigned long start, unsigned long len, const char *name)
 {
   unsigned int i;
     struct resource *resource = (struct resource*)malloc(sizeof(struct resource));
+    allocated_mem = resource;
 
 
 
@@ -3980,6 +3982,7 @@ inline struct resource *request_region(unsigned long start, unsigned long len, c
 inline void release_region(unsigned long start, unsigned long len)
 {
   unsigned int i = 0;
+  free(allocated_mem);
 
 
 

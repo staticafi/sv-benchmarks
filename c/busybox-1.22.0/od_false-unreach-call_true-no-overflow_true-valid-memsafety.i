@@ -3233,7 +3233,7 @@ static void dump_strings(signed long int address, signed long int end_offset)
       }
       while(!(in_stream == ((struct _IO_FILE *)((void *)0))))
       {
-        c=_IO_getc (in_stream);
+        c=getc (in_stream);
         if(c != -1)
           goto got_char;
         check_and_close();

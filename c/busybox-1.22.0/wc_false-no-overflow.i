@@ -2940,7 +2940,7 @@ signed int __main(signed int argc, char **argv)
       while((_Bool)1)
       {
         signed int c;
-        c=_IO_getc (fp);
+        c=getc (fp);
         if(c == -1)
         {
           signed int return_value_ferror$2;

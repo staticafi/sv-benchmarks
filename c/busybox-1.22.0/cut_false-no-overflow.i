@@ -2237,7 +2237,7 @@ static char * bb_get_chunk_from_file(struct _IO_FILE *file, signed int *end)
   unsigned int tmp_post$2;
   do
   {
-    ch=_IO_getc (file);
+    ch=getc (file);
     if(ch == -1)
       break;
     if((255u & idx) == 0u)

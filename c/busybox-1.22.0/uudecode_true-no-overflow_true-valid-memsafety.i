@@ -2349,7 +2349,7 @@ static char * bb_get_chunk_from_file(struct _IO_FILE *file, signed int *end)
   unsigned int tmp_post$2;
   do
   {
-    ch=_IO_getc (file);
+    ch=getc (file);
     if(ch == -1)
       break;
     if((255u & idx) == 0u)
@@ -3096,7 +3096,7 @@ static void read_base64(struct _IO_FILE *src_stream, struct _IO_FILE *dst_stream
     while(in_count < 64)
     {
       signed int ch;
-      ch=_IO_getc (src_stream);
+      ch=getc (src_stream);
       if(ch == (signed int)(signed char)flags)
       {
         if(in_count == 0)

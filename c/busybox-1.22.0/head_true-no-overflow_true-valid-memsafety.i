@@ -2221,7 +2221,7 @@ static char * bb_get_chunk_from_file(struct _IO_FILE *file, signed int *end)
   unsigned int tmp_post$2;
   do
   {
-    ch=_IO_getc (file);
+    ch=getc (file);
     if(ch == -1)
       break;
     if((255u & idx) == 0u)
@@ -2601,7 +2601,7 @@ static void print_except_N_last_bytes(struct _IO_FILE *fp, unsigned int count)
   do
   {
     signed int c;
-    c=_IO_getc (fp);
+    c=getc (fp);
     if(c == -1)
       goto ret;
     tmp_post$2 = head;
@@ -2617,7 +2617,7 @@ static void print_except_N_last_bytes(struct _IO_FILE *fp, unsigned int count)
     if(head == count)
       head = (unsigned int)0;
     putchar((signed int)circle[(signed long int)head]);
-    print_except_N_last_bytes$$1$$2$$1$$c=_IO_getc (fp);
+    print_except_N_last_bytes$$1$$2$$1$$c=getc (fp);
     if(print_except_N_last_bytes$$1$$2$$1$$c == -1)
       break;
     circle[(signed long int)head] = (unsigned char)print_except_N_last_bytes$$1$$2$$1$$c;
@@ -2686,7 +2686,7 @@ static void print_first_N(struct _IO_FILE *fp, unsigned long int count, _Bool co
   while(!(count == 0ul))
   {
     signed int c;
-    c=_IO_getc (fp);
+    c=getc (fp);
     if(c == -1)
       break;
     if((signed int)count_bytes == 0)

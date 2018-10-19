@@ -2852,7 +2852,7 @@ signed int __main(signed int argc, char **argv)
       *bb_errno = i;
       do
       {
-        ch=_IO_getc (f);
+        ch=getc (f);
         if(!(ch == -1))
         {
           if((127 & i) == 0)

@@ -2472,7 +2472,7 @@ signed int __main(signed int argc, char **argv)
     {
       do
       {
-        c=_IO_getc (istream);
+        c=getc (istream);
         if(c == -1)
           break;
         if((4095u & offset_out) == 0u)

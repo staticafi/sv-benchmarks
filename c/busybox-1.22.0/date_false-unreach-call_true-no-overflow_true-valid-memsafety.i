@@ -2413,7 +2413,6 @@ static unsigned int getopt32(char **argv, const char *applet_opts, ...);
 static unsigned long long int handle_errors(unsigned long long int v, char **endp);
 static signed int index_in_substrings(const char *strings, const char *key);
 static void llist_add_to_end(struct llist_t **list_head, void *data);
-static void maybe_set_utc(signed int opt);
 static void parse_datestr(const char *date_str, struct tm *ptm);
 static unsigned long long int ret_ERANGE(void);
 static signed long int safe_write(signed int fd, const void *buf, unsigned long int count);
@@ -2663,7 +2662,6 @@ signed int __main(signed int argc, char **argv)
   applet_long_options = date_longopts;
   opt=getopt32(argv, "Rs:ud:r:I::D:", &date_str, &date_str, &filename, &isofmt_arg, &fmt_str2dt);
   argv = argv + (signed long int)optind;
-  maybe_set_utc((signed int)opt);
   if(!((32u & opt) == 0u))
   {
     ifmt = 0;
@@ -2791,7 +2789,6 @@ signed int __main(signed int argc, char **argv)
     if(!((signed int)*date_str == 64))
       tm_time.tm_isdst = -1;
     ts.tv_sec=validate_tm_time(date_str, &tm_time);
-    maybe_set_utc((signed int)opt);
     if(!((2u & opt) == 0u))
     {
       return_value_stime$15=stime(&ts.tv_sec);
@@ -3403,11 +3400,6 @@ static void llist_add_to_end(struct llist_t **list_head, void *data)
   return_value_xzalloc$1=xzalloc(sizeof(struct llist_t) );
   *list_head = (struct llist_t *)return_value_xzalloc$1;
   (*list_head)->data = (char *)data;
-}
-static void maybe_set_utc(signed int opt)
-{
-  if(!((4 & opt) == 0))
-    putenv((char *)"TZ=UTC0");
 }
 static void parse_datestr(const char *date_str, struct tm *ptm)
 {

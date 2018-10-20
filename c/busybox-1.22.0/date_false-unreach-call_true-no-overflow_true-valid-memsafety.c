@@ -77,8 +77,6 @@ static unsigned long long int handle_errors(unsigned long long int v, char **end
 static signed int index_in_substrings(const char *strings, const char *key);
 // file include/libbb.h line 1045
 static void llist_add_to_end(struct llist_t **list_head, void *data);
-// file coreutils/date.c line 155
-static void maybe_set_utc(signed int opt);
 // file libbb/time.c line 11
 static void parse_datestr(const char *date_str, struct tm *ptm);
 // file libbb/bb_strtonum.c line 33
@@ -408,7 +406,6 @@ signed int __main(signed int argc, char **argv)
   applet_long_options = date_longopts;
   opt=getopt32(argv, "Rs:ud:r:I::D:", &date_str, &date_str, &filename, &isofmt_arg, &fmt_str2dt);
   argv = argv + (signed long int)optind;
-  maybe_set_utc((signed int)opt);
   if(!((32u & opt) == 0u))
   {
     ifmt = 0;
@@ -570,7 +567,6 @@ signed int __main(signed int argc, char **argv)
       tm_time.tm_isdst = -1;
 
     ts.tv_sec=validate_tm_time(date_str, &tm_time);
-    maybe_set_utc((signed int)opt);
     if(!((2u & opt) == 0u))
     {
       return_value_stime$15=stime(&ts.tv_sec);
@@ -1310,15 +1306,6 @@ static void llist_add_to_end(struct llist_t **list_head, void *data)
   *list_head = (struct llist_t *)return_value_xzalloc$1;
   (*list_head)->data = (char *)data;
 }
-
-// file coreutils/date.c line 155
-static void maybe_set_utc(signed int opt)
-{
-  if(!((4 & opt) == 0))
-    putenv((char *)"TZ=UTC0");
-
-}
-
 // file libbb/time.c line 11
 static void parse_datestr(const char *date_str, struct tm *ptm)
 {

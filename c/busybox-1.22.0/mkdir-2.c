@@ -1167,8 +1167,10 @@ signed int __main(signed int argc, char **argv)
 
   argv = argv + (signed long int)optind;
 
-  if(*argv == ((char *)NULL))
+  if(*argv == ((char *)NULL)) {
     bb_show_usage();
+    abort();
+  }
 
   do
   {

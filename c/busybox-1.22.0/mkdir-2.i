@@ -3297,8 +3297,10 @@ signed int __main(signed int argc, char **argv)
   if(!((2u & opt) == 0u))
     flags = flags | 4;
   argv = argv + (signed long int)optind;
-  if(*argv == ((char *)((void *)0)))
+  if(*argv == ((char *)((void *)0))) {
     bb_show_usage();
+    abort();
+  }
   do
   {
     signed int return_value_bb_make_directory$2;

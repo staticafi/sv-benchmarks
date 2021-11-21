@@ -10,7 +10,7 @@
 
 #include <stdbool.h>
 
-extern int __VERIFIER_nondet_int() __attribute__ ((__noreturn__));
+extern int __VERIFIER_nondet_int(void);
 
 int v, y, parity;       // word value to compute the parity of
 /* bool parity;  // parity will be the parity of v */

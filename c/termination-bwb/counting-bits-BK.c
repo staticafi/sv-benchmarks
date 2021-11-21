@@ -11,7 +11,7 @@
 
 #include <stdbool.h>
 
-extern int __VERIFIER_nondet_int() __attribute__ ((__noreturn__));
+extern int __VERIFIER_nondet_int(void);
 
 int v; // count the number of bits set in v
 unsigned int c; // c accumulates the total bits set in v

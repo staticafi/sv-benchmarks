@@ -527,7 +527,7 @@ extern int getsubopt (char **__restrict __optionp,
 extern int getloadavg (double __loadavg[], int __nelem)
      __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
 
-extern int __VERIFIER_nondet_int() __attribute__ ((__noreturn__));
+extern int __VERIFIER_nondet_int(void);
 int main (){
   int a, x;
   x = __VERIFIER_nondet_int();

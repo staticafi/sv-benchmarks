@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-extern unsigned int __VERIFIER_nondet_unsigned() __attribute__ ((__noreturn__));
+extern unsigned int __VERIFIER_nondet_unsigned(void);
 extern int __VERIFIER_nondet_int () __attribute__ ((__noreturn__));
 int v;
 int r;

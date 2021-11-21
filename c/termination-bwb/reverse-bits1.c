@@ -10,7 +10,7 @@
 
 #include <stdbool.h>
 
-extern unsigned int __VERIFIER_nondet_unsigned() __attribute__ ((__noreturn__));
+extern unsigned int __VERIFIER_nondet_unsigned(void);
 extern int __VERIFIER_nondet_int () __attribute__ ((__noreturn__));
 
 int v;     // input bits to be reversed
